@@ -1,4 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 import { CreateTarefaDto } from './create-tarefa.dto';
 
-export class UpdateTarefaDto extends PartialType(CreateTarefaDto) {}
+export class UpdateTarefaDto extends PartialType(CreateTarefaDto) {
+    status: number
+}

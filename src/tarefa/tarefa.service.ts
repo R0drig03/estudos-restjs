@@ -1,11 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTarefaDto } from './dto/create-tarefa.dto';
 import { UpdateTarefaDto } from './dto/update-tarefa.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Tarefa } from './entities/tarefa.entity';
+import { Repository } from 'typeorm';
+import { StatusTarefa } from './tarefa.status.enum';
 
 @Injectable()
 export class TarefaService {
-  create(createTarefaDto: CreateTarefaDto) {
-    return 'This action adds a new tarefa';
+  constructor(
+  @InjectRepository(Tarefa)
+  private tarefaRepository: Repository<Tarefa>    
+  ) {}
+
+  async create(createTarefaDto: CreateTarefaDto) {
+    const task = this.tarefaRepository.create(createTarefaDto);
+    task.status = StatusTarefa.ATIVO;
+    
+    return await this.tarefaRepository.save(task);
   }
 
   findAll() {

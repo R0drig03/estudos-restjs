@@ -17,9 +17,10 @@ export class TarefaController {
     return this.tarefaService.findAll();
   }
 
+  //puxar somente uma tarefa baseado no id
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.tarefaService.findOne(+id);
+    return this.tarefaService.findOne(+id); // --> O "+" CONVERTE A STRING PARA NUMBER
   }
 
   @Patch(':id')
