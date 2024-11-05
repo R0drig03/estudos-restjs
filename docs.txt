@@ -1,0 +1,2 @@
+#COMANDO MIGRATE PARA CRIAR UM BANCO DE DADOS
+npm run migration:create -name=user_table
