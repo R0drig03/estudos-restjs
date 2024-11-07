@@ -1,4 +1,4 @@
 export enum StatusTarefa{
     'ATIVO' = 1,
-    'INATIVO'= 2
+    'INATIVO' = 2
 };

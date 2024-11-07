@@ -24,8 +24,8 @@ export class TarefaController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTarefaDto: UpdateTarefaDto) {
-    return this.tarefaService.update(+id, updateTarefaDto);
+  async update(@Param('id') id: string, @Body() updateTarefaDto: UpdateTarefaDto) {
+    return await this.tarefaService.update(+id, updateTarefaDto);
   }
 
   @Delete(':id')

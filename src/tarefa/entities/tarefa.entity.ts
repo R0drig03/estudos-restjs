@@ -1,13 +1,13 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn} from "typeorm";
  
 
-@Entity({ name: 'tarefas_n' })
+@Entity({ name: 'tarefas_n' }) //CONSIDERADA ESSA CLASSE UMA ENTIDADE
 export class Tarefa {
 
     @PrimaryGeneratedColumn('increment')
     id: number; //PREENCHIDO AUTOMÁTICAMENTE
     
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @CreateDateColumn()
     criado_em: Date; //PREENCHIDO AUTOMÁTICAMENTE
 
     @Column({ nullable: true })
@@ -22,3 +22,5 @@ export class Tarefa {
     @Column({ nullable: false , default: () => '1'})
     status: number; //PREENCHIDO AUTOMÁTICAMENTE
 }
+
+//OS DTOS SERVEM PARA INFORMAR QUAIS OS ATRIBUTOS REALMENTE DEVEM SER CONSIDARADOS NOS INPUT E OUTPUTS DE DADOS NOS ENDPOINTS
